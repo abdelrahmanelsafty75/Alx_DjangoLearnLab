@@ -120,3 +120,4 @@ STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = 'list_books' 
 LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
