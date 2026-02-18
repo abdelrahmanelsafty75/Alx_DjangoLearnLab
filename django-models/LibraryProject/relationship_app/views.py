@@ -32,7 +32,7 @@ class RegisterView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
 
-#UserCreationForm() is a built-in form provided by Django that handles user registration. It includes fields for username, password, and password confirmation, along with validation to ensure that the passwords match and meet certain criteria. By using this form, you can easily create a registration page for new users without having to manually define the form fields and validation logic.
+#UserCreationForm()
 
 def is_admin(user):
     return user.userprofile.role == 'Admin'
