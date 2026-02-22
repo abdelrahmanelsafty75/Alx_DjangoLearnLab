@@ -22,3 +22,26 @@ def delete_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     return render(request, 'bookshelf/delete_book.html', {'book': book})
 
+
+
+from django.shortcuts import render
+from .forms import ExampleForm
+from .models import Book
+
+def form_example_view(request):
+    books = Book.objects.all() 
+    
+    if request.method == 'POST':
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+           
+    else:
+        form = ExampleForm()
+
+    response = render(request, 'bookshelf/form_example.html', {'form': form, 'books': books})
+    
+   
+    response['Content-Security-Policy'] = "default-src 'self'"
+    
+    return response
