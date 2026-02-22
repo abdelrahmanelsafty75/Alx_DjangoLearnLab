@@ -34,7 +34,7 @@ def form_example_view(request):
     if request.method == 'POST':
         form = ExampleForm(request.POST)
         if form.is_valid():
-            title = form.cleaned_data['title']
+            title = form.cleaned_data['title']      
            
     else:
         form = ExampleForm()

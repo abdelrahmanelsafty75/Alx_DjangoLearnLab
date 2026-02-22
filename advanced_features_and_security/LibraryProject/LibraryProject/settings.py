@@ -137,3 +137,36 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
 CSP_DEFAULT_SRC = ("'self'",) 
+
+
+# ==============================================================================
+# SECURE HTTPS AND HEADERS CONFIGURATION (Production Settings)
+# ==============================================================================
+
+# --- Step 1: Configure Django for HTTPS Support ---
+# Redirect all non-HTTPS requests to HTTPS
+SECURE_SSL_REDIRECT = True #
+
+# HTTP Strict Transport Security (HSTS) settings
+# Instructs the browser to only send requests over HTTPS for the next year (31536000 seconds)
+SECURE_HSTS_SECONDS = 31536000 #
+# Includes all subdomains in the HSTS policy
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True #
+# Allows the site to be submitted to the browser preload list
+SECURE_HSTS_PRELOAD = True #
+
+# --- Step 2: Enforce Secure Cookies ---
+# Ensure session cookies are only transmitted over secure HTTPS connections
+SESSION_COOKIE_SECURE = True #
+# Ensure CSRF cookies are only transmitted over secure HTTPS connections
+CSRF_COOKIE_SECURE = True #
+
+# --- Step 3: Implement Secure Headers ---
+# Prevent the site from being framed to protect against clickjacking attacks
+X_FRAME_OPTIONS = 'DENY' #
+# Prevent browsers from MIME-sniffing a response away from the declared content-type
+SECURE_CONTENT_TYPE_NOSNIFF = True #
+# Enable the browser's XSS filtering to help prevent cross-site scripting attacks
+SECURE_BROWSER_XSS_FILTER = True #
+
+# ==============================================================================
