@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from .models import Book
 
-
+# book_list 
 @permission_required('bookshelf.can_view', raise_exception=True)
 def view_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
