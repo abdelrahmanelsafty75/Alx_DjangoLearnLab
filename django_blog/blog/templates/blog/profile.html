@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+    <h2>My Profile</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div style="color: green; font-weight: bold;">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ u_form.as_p }}
+        <button type="submit">Update Info</button>
+    </form>
+{% endblock content %}
